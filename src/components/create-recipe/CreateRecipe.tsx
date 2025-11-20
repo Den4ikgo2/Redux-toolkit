@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { useCreateRecipeMutation } from "../../store/api/recipe.api";
+import { IRecipeData } from "../../types/recipe.types";
 
 export default function CreateRecipe() {
-  const defaultValue = {
+  const defaultValue: IRecipeData = {
     name: "",
     image: "",
   };
@@ -11,8 +12,8 @@ export default function CreateRecipe() {
 
   const [createRecipe] = useCreateRecipeMutation({});
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.
     createRecipe(recipe).then(() => setRecipe(defaultValue));
   };
 

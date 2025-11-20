@@ -1,11 +1,11 @@
 import CreateRecipe from "./components/create-recipe/CreateRecipe";
 import Header from "./components/header/Header";
 import RecipeItem from "./components/recipe-item/RecipeItem";
-import User from "./components/user/user";
+import User from "./components/user/User";
 import { useGetRecipesQuery } from "./store/api/api";
 
 function App() {
-  const { isLoading, data } = useGetRecipesQuery();
+  const { isLoading, data } = useGetRecipesQuery(null);
 
   return (
     <section>
