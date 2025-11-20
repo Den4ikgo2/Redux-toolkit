@@ -1,32 +1,29 @@
 import Header from "./components/header/Header";
 import RecipeItem from "./components/recipe-item/RecipeItem";
 import User from "./components/user/user";
+import { useGetRecipesQuery } from "./store/api/api";
 
 function App() {
+  const { isLoading, data } = useGetRecipesQuery();
+
   return (
     <section>
       <Header />
       <User />
-      <div>
-        <RecipeItem
-          recipe={{
-            id: 1,
-            name: "Лазанья",
-          }}
-        />
-        <RecipeItem
-          recipe={{
-            id: 2,
-            name: "Каша",
-          }}
-        />
-        <RecipeItem
-          recipe={{
-            id: 3,
-            name: "Паста",
-          }}
-        />
-      </div>
+      {isLoading && <h2>Идет загрузка...</h2>}
+      <ul>
+        {data ? (
+          data.map((item) => (
+            <li key={item.id}>
+              <RecipeItem
+                recipe={item}
+              />
+            </li>
+          ))
+        ) : (
+          <h2>Не найдено</h2>
+        )}
+      </ul>
     </section>
   );
 }
