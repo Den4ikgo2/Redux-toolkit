@@ -13,7 +13,7 @@ export default function CreateRecipe() {
   const [createRecipe] = useCreateRecipeMutation({});
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.
+    e.preventDefault()
     createRecipe(recipe).then(() => setRecipe(defaultValue));
   };
 
